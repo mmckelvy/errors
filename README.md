@@ -5,7 +5,7 @@ A collection of HTTP errors for use with Node / Express.
 Handle an error in a route handler.
 
 ```javascript
-const { notFound } = require('../../errors');
+const { notFound } = require('@mmckelvy/errors');
 
 
 async function getUser(req, res, next) {
@@ -32,6 +32,29 @@ async function getUser(req, res, next) {
 
 ```
 
-## API
+## Base HTTP Error Class
 
+```javascript
+module.exports = class HttpError extends Error {
+  constructor({
+    // Client facing props
+    statusCode = 500,
+    error = 'Internal server error',
+    message = 'Something went wrong. Try again later.',
 
+    // Private props (not to be shared with client)
+    isOperational = false,
+    detail = {}
+  } = {}) {
+    super();
+
+    this.statusCode = statusCode;
+    this.error = error;
+    this.message = message;
+
+    this.isOperational = isOperational;
+    this.detail = detail;
+  }
+};
+
+```
