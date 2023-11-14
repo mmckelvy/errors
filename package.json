@@ -1,0 +1,14 @@
+{
+  "name": "@mmckelvy/errors",
+  "version": "1.0.0",
+  "description": "A collection of HTTP errors",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./src/**"
+  },
+  "author": "Mark McKelvy",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.53.0"
+  }
+}
