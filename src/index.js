@@ -1,11 +1,9 @@
-const badRequest = require('./bad-request');
-const unauthorized = require('./unauthorized');
-const notFound = require('./not-found');
-const serviceUnavailable = require('./service-unavailable');
+const db = require('./db');
+const handlers = require('./handlers');
+const httpErrors = require('./http-errors');
 
 module.exports = {
-  badRequest,
-  unauthorized,
-  notFound,
-  serviceUnavailable
+  db,
+  handlers,
+  httpErrors
 };
