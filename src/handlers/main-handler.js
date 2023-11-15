@@ -1,6 +1,6 @@
 const { HttpError } = require('../http');
 
-module.exports = function handleError({ logger, err, req, res }) {
+module.exports = function mainHandler({ logger, err, req, res }) {
   // Handle programmer errors (e.g. "typeof 'foo' is undefined")
   if (!err.isOperational) {
     logger.log({
