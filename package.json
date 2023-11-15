@@ -2,11 +2,15 @@
   "name": "@mmckelvy/errors",
   "version": "1.0.0",
   "description": "A collection of HTTP errors",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint ./src/**"
   },
   "author": "Mark McKelvy",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mmckelvy/errors.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "eslint": "^8.53.0"
