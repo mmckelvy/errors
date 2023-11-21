@@ -1,5 +1,5 @@
 # Errors
-A collection of HTTP errors for use with Node / Express.
+A collection of errors for use with Node / Express.
 
 ## Usage
 Handle an error in a route handler.
@@ -58,23 +58,36 @@ module.exports = class HttpError extends Error {
 };
 ```
 
-## Example (Not Found)
+## PostgreSQL errors
 
 ```javascript
-const HttpError = require('./http-error');
-
-module.exports = function notFound({
-  error = 'Not found',
-  message = 'The resource you requested does not exist.',
-  detail,
-} = {}) {
-
-  return new HttpError({
-    statusCode: 404,
-    error,
-    message,
-    isOperational: true,
-    detail,
-  });
+module.exports = {
+  uniqueViolation(err) {
+    return err.code && err.code === '23505';
+  },
+  checkViolation(err) {
+    return err.code && err.code === '23514';
+  },
+  invalidDate(err) {
+    return err.code && (err.code === '22008' || '22007');
+  },
+  syntaxError(err) {
+    return err.code && err.code === '42601';
+  },
+  restrictViolation(err) {
+    return err.code && err.code === '23001';
+  },
+  foreignKeyViolation(err) {
+    return err.code && err.code === '23503';
+  },
+  notNullViolation(err) {
+    return err.code && err.code === '23502';
+  },
+  dataException(err) {
+    return err.code && /^22.+$/.test(err.code);
+  },
+  undefinedColumn(err) {
+    return err.code && err.code === '42703';
+  },
 };
 ```
