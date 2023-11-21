@@ -1,9 +1,17 @@
-const db = require('./db');
-const handlers = require('./handlers');
-const httpErrors = require('./http-errors');
+// HTTP
+const badRequest = require('./bad-request');
+const HttpError = require('./http-error');
+const notFound = require('./not-found');
+const serviceUnavailable = require('./service-unavailable');
+const unauthorized = require('./unauthorized');
+// PG
+const pgErrors = require('./pg-errors');
 
 module.exports = {
-  db,
-  handlers,
-  httpErrors
+  badRequest,
+  HttpError,
+  notFound,
+  serviceUnavailable,
+  unauthorized,
+  pgErrors
 };
